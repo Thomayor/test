@@ -1,31 +1,27 @@
-name: ci
+name: Push Docker Image
 
 on:
   push:
     branches:
-      - "main"
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v4
-      -
-        name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      -
-        name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t ghcr.io/Thomayor/test:latest .
+          docker push ghcr.io/Thomayor/test:latest
+
