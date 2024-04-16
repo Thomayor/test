@@ -50,7 +50,7 @@ jobs:
         with:
           host: ec2-54-161-48-234.compute-1.amazonaws.com
           username: admin
-          key: ${{ secrets.key }}
+          key: ${{ secrets.KEY }}
           source: docker-compose.yml
           target: /home/admin/docker
 
