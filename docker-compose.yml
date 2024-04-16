@@ -1,5 +1,5 @@
 services:
   helloworld:
-    image: ghcr.io/gaudinvincent/ci-with-docker:main
+    image: ghcr.io/thomayor/test:main
     ports:
       - "80:80"
