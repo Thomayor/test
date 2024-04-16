@@ -61,7 +61,8 @@ jobs:
           username: admin
           key: ${{ secrets.ssh }}
           script: | 
-                  sudo docker compose -f "/home/admin/docker/docker-compose.yml" pull 
-                  sudo docker compose -f "/home/admin/docker/docker-compose.yml" up -d
+            cd /home/admin/docker
+            sudo docker-compose pull
+            sudo docker-compose up -d
 
 
