@@ -59,5 +59,8 @@ jobs:
           host: ec2-54-161-48-234.compute-1.amazonaws.com
           username: admin
           key: ${{ secrets.ssh }}
-          script: sudo docker compose -f "/home/admin/docker/docker-compose.yml" up -d --pull
+          script: | 
+                  sudo docker-compose -f "/home/admin/docker/docker-compose.yml" pull 
+                  sudo docker-compose -f "/home/admin/docker/docker-compose.yml" up -d
+
 
