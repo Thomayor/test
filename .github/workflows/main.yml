@@ -53,5 +53,11 @@ jobs:
           key: ${{ secrets.ssh }}
           source: docker-compose.yml
           target: /home/admin/docker
-
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ec2-54-161-48-234.compute-1.amazonaws.com
+          username: admin
+          key: ${{ secrets.ssh }}
+          script: docker compose -f "/home/admin/docker/docker-compose.yml" up -d --build
 
