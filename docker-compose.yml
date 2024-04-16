@@ -5,18 +5,18 @@ services:
       - '6379:6379'
   web1:
     restart: on-failure
-    image: 'ghcr.io/thomayor/test:web1'
+    image: 'ghcr.io/thomayor/web1'
     hostname: web1
     ports:
       - '81:5000'
   web2:
     restart: on-failure
-    image: 'ghcr.io/thomayor/test:web2'
+    image: 'ghcr.io/thomayor/web2'
     hostname: web2
     ports:
       - '82:5000'
   nginx:
-    image: 'ghcr.io/thomayor/test:nginx'
+    image: 'ghcr.io/thomayor/nginx'
     ports:
     - '80:80'
     depends_on:
