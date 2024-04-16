@@ -62,7 +62,7 @@ jobs:
           key: ${{ secrets.ssh }}
           script: | 
             cd /home/admin/docker
-            sudo docker-compose pull
-            sudo docker-compose up -d
+            sudo docker compose pull
+            sudo docker compose up -d
 
 
